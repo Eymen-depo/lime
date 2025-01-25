@@ -27,7 +27,7 @@ const config = {
       messages: [      
         { text: "/quake towny3", delay: 10 },
         { text: "/t spawn Eyland", delay: 5 },
-        { text: "/t accept Eyland", delay: 10 },                  
+        { text: "/login fake3", delay: 10 },                  
         { text: "/onay", delay: 10 }
       ]
     },
