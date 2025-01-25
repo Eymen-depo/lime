@@ -13,7 +13,7 @@ const config = {
     type: "legacy"
   },
   server: {
-    ip: "mc.craftlime.net,
+    ip: "mc.craftlime.net",
     port: 25565,
     version: "1.19.3"
   },
