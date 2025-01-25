@@ -25,9 +25,9 @@ const config = {
     chatMessages: {
       enabled: true,
       messages: [      
-        { text: "/quake towny3", delay: 5 },
+        { text: "/login fake3!", delay: 5 },
         { text: "/t spawn Eyland", delay: 5 },
-        { text: "/t accept Eyland", delay: 5 },                  
+        { text: "/quake towny3", delay: 5 },                  
         { text: "/onay", delay: 5 }
       ]
     },
