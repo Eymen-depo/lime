@@ -61,12 +61,15 @@ function startBot() {
 
   // Bot olay dinleyicileri
   bot.on('spawn', () => {
-    console.log('Bot bağlandı!');
+    console.log('Bot başarıyla bağlandı!');
     botConnected = true;
 
+    // Şifreyi göndermek için 10 saniye bekleyin
     if (config.utils.autoAuth.enabled) {
-      bot.chat(`/login ${config.utils.autoAuth.password}`);
-      console.log(`Otomatik giriş: /login ${config.utils.autoAuth.password}`);
+      setTimeout(() => {
+        bot.chat(`/login ${config.utils.autoAuth.password}`);
+        console.log(`Otomatik giriş: /login ${config.utils.autoAuth.password}`);
+      }, 10000); // 10 saniyelik gecikme
     }
 
     // Mesaj gönderme işlevi
@@ -106,6 +109,11 @@ function startBot() {
     console.log('Bot bağlantısı kesildi. Yeniden bağlanacak...');
     botConnected = false;
     setTimeout(startBot, config.utils.autoReconnectDelay); // Botu yeniden başlat
+  });
+
+  // Hata mesajlarını dinleyin
+  bot.on('error', (err) => {
+    console.log('Bot hata aldı:', err);
   });
 }
 
