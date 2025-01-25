@@ -25,7 +25,6 @@ const config = {
     chatMessages: {
       enabled: true,
       messages: [      
-        { text: "/login Fake-3", delay: 5 },
         { text: "/t spawn Eyland", delay: 5 },
         { text: "/quake towny3", delay: 5 },                  
         { text: "/onay", delay: 5 }
@@ -61,7 +60,7 @@ function startBot() {
 
   // Bot olay dinleyicileri
   bot.on('spawn', () => {
-    console.log('Bot başarıyla bağlandı!');
+    console.log('Bot başarıyla bağlandı ve spawn oldu.');
     botConnected = true;
 
     // Şifreyi göndermek için 15 saniye bekleyin
@@ -75,7 +74,7 @@ function startBot() {
     // Mesaj gönderme işlevi
     if (config.utils.chatMessages.enabled) {
       config.utils.chatMessages.messages.forEach((messageObj, index) => {
-        setInterval(() => {
+        setTimeout(() => {
           bot.chat(messageObj.text);
           console.log(`Gönderildi: ${messageObj.text}`);
         }, messageObj.delay * 1000);
