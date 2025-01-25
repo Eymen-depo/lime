@@ -64,12 +64,12 @@ function startBot() {
     console.log('Bot başarıyla bağlandı!');
     botConnected = true;
 
-    // Şifreyi göndermek için 10 saniye bekleyin
+    // Şifreyi göndermek için 15 saniye bekleyin
     if (config.utils.autoAuth.enabled) {
       setTimeout(() => {
         bot.chat(`/login ${config.utils.autoAuth.password}`);
         console.log(`Otomatik giriş: /login ${config.utils.autoAuth.password}`);
-      }, 10000); // 10 saniyelik gecikme
+      }, 15000); // 15 saniyelik gecikme
     }
 
     // Mesaj gönderme işlevi
