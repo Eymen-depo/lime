@@ -20,15 +20,15 @@ const config = {
   utils: {
     autoAuth: {
       enabled: true,
-      password: "fake3"
+      password: "fake3!"
     },
     chatMessages: {
       enabled: true,
       messages: [      
-        { text: "/login fake3", delay: 10 },
         { text: "/quake towny3", delay: 5 },
-        { text: "/t spawn Eyland", delay: 10 },                  
-        { text: "/onay", delay: 10 }
+        { text: "/t spawn Eyland", delay: 5 },
+        { text: "/t accept Eyland", delay: 5 },                  
+        { text: "/onay", delay: 5 }
       ]
     },
     antiAfk: {
