@@ -25,8 +25,8 @@ const config = {
     chatMessages: {
       enabled: true,
       messages: [
-        { text: "/t spawn Eyland", delay: 5 },
         { text: "/quake towny3", delay: 5 },
+        { text: "/t spawn Eyland_Empire", delay: 5 },
         { text: "/onay", delay: 5 }
       ]
     },
