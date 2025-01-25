@@ -8,8 +8,8 @@ let botConnected = false; // Bot bağlantı durumu
 // Bot yapılandırma ayarları
 const config = {
   botAccount: {
-    username: "EylandAFK",
-    password: "fake3!",
+    username: "EylandAFKv1",
+    password: "Fake-3",
     type: "legacy"
   },
   server: {
@@ -20,12 +20,12 @@ const config = {
   utils: {
     autoAuth: {
       enabled: true,
-      password: "fake3!"
+      password: "Fake-3"
     },
     chatMessages: {
       enabled: true,
       messages: [      
-        { text: "/login fake3!", delay: 5 },
+        { text: "/login Fake-3", delay: 5 },
         { text: "/t spawn Eyland", delay: 5 },
         { text: "/quake towny3", delay: 5 },                  
         { text: "/onay", delay: 5 }
