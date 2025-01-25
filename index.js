@@ -9,7 +9,7 @@ let botConnected = false; // Bot bağlantı durumu
 const config = {
   botAccount: {
     username: "EylandAFK",
-    password: "fake3",
+    password: "fake3!",
     type: "legacy"
   },
   server: {
