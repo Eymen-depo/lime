@@ -8,7 +8,7 @@ let botConnected = false; // Bot bağlantı durumu
 // Bot yapılandırma ayarları
 const config = {
   botAccount: {
-    username: "AdanaDurum",
+    username: "EylandAFK",
     password: "fake3",
     type: "legacy"
   },
@@ -25,10 +25,10 @@ const config = {
     chatMessages: {
       enabled: true,
       messages: [      
-        { text: "/is accept EymanBey", delay: 10 },
-        { text: "/skyblock", delay: 5 },
-        { text: "/is go StoneGoldAzo", delay: 10 },                  
-        { text: "/home 1", delay: 15 }
+        { text: "/quake towny3", delay: 10 },
+        { text: "/t spawn Eyland", delay: 5 },
+        { text: "/t accept Eyland", delay: 10 },                  
+        { text: "/onay", delay: 10 }
       ]
     },
     antiAfk: {
