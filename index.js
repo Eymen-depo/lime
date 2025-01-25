@@ -41,6 +41,19 @@ const config = {
 
 let bot;
 
+// Komutları sırasıyla gönderme fonksiyonu
+function executeChatCommands(commands) {
+  let delay = 0;
+
+  commands.forEach((command, index) => {
+    setTimeout(() => {
+      bot.chat(command.text);
+      console.log(`Komut gönderildi: ${command.text}`);
+    }, delay);
+    delay += command.delay * 1000; // Gecikmeyi sıradaki komut için artır
+  });
+}
+
 // Bot başlatma fonksiyonu
 function startBot() {
   bot = mineflayer.createBot({
@@ -56,6 +69,14 @@ function startBot() {
   bot.on('spawn', () => {
     console.log('Bot başarıyla bağlandı ve spawn oldu.');
     botConnected = true;
+
+    // Eğer şifre başarıyla girilmişse, komutları gönder
+    if (config.utils.chatMessages.enabled) {
+      setTimeout(() => {
+        console.log('Komutlar gönderilmeye başlanıyor...');
+        executeChatCommands(config.utils.chatMessages.messages);
+      }, 5000); // Şifre girişinden sonra 5 saniye bekleme
+    }
   });
 
   // Sohbet mesajlarını dinleme ve login komutunu doğru zamanda gönderme
