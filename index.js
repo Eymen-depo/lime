@@ -15,7 +15,7 @@ const config = {
   server: {
     ip: "mc.craftlime.net",
     port: 25565,
-    version: "1.17.1"
+    version: "1.19.3"
   },
   utils: {
     autoAuth: {
