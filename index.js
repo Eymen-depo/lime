@@ -24,9 +24,9 @@ const config = {
     },
     chatMessages: {
       enabled: true,
-      messages: [      
+      messages: [
         { text: "/t spawn Eyland", delay: 5 },
-        { text: "/quake towny3", delay: 5 },                  
+        { text: "/quake towny3", delay: 5 },
         { text: "/onay", delay: 5 }
       ]
     },
@@ -35,12 +35,6 @@ const config = {
     },
     autoReconnect: true,
     autoReconnectDelay: 5000
-  },
-  position: {
-    enabled: true,
-    x: 100,
-    y: 64,
-    z: 100
   },
   chatLog: true
 };
@@ -58,49 +52,21 @@ function startBot() {
     auth: config.botAccount.type
   });
 
-  // Bot olay dinleyicileri
+  // Bot spawn olduğunda
   bot.on('spawn', () => {
     console.log('Bot başarıyla bağlandı ve spawn oldu.');
     botConnected = true;
-
-    // Şifreyi göndermek için 15 saniye bekleyin
-    if (config.utils.autoAuth.enabled) {
-      setTimeout(() => {
-        bot.chat(`/login ${config.utils.autoAuth.password}`);
-        console.log(`Otomatik giriş: /login ${config.utils.autoAuth.password}`);
-      }, 15000); // 15 saniyelik gecikme
-    }
-
-    // Mesaj gönderme işlevi
-    if (config.utils.chatMessages.enabled) {
-      config.utils.chatMessages.messages.forEach((messageObj, index) => {
-        setTimeout(() => {
-          bot.chat(messageObj.text);
-          console.log(`Gönderildi: ${messageObj.text}`);
-        }, messageObj.delay * 1000);
-      });
-    }
-
-    // Anti-AFK işlevi
-    if (config.utils.antiAfk.enabled) {
-      setInterval(() => {
-        const moveDirections = ['forward', 'back', 'left', 'right'];
-        const randomDirection = moveDirections[Math.floor(Math.random() * moveDirections.length)];
-        
-        // Rastgele bir yön seç ve kısa süre hareket et
-        bot.setControlState(randomDirection, true);
-        setTimeout(() => {
-          bot.setControlState(randomDirection, false);
-        }, 500); // 0.5 saniye hareket et
-        
-        console.log(`Bot ${randomDirection} yönüne hareket etti.`);
-      }, 10000); // Her 10 saniyede bir hareket et
-    }
   });
 
-  // Sohbet mesajlarını dinleme
+  // Sohbet mesajlarını dinleme ve login komutunu doğru zamanda gönderme
   bot.on('message', (message) => {
-    console.log(message.toString());
+    const msg = message.toString();
+    console.log(`Sunucudan mesaj: ${msg}`);
+
+    if (msg.includes("Lütfen /login") && config.utils.autoAuth.enabled) {
+      bot.chat(`/login ${config.utils.autoAuth.password}`);
+      console.log(`Otomatik giriş yapıldı: /login ${config.utils.autoAuth.password}`);
+    }
   });
 
   // Bağlantı kesildiğinde yeniden bağlanma
@@ -110,7 +76,7 @@ function startBot() {
     setTimeout(startBot, config.utils.autoReconnectDelay); // Botu yeniden başlat
   });
 
-  // Hata mesajlarını dinleyin
+  // Hata mesajlarını dinleme
   bot.on('error', (err) => {
     console.log('Bot hata aldı:', err);
   });
